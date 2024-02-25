@@ -12,13 +12,51 @@ class Player {
   double atk = 5;
   double def = 5;
   List inventory = [];
+  List abilities = [];
 
-  Player(String this.name);
+  Player(String? this.name);
 
   void attack(Player player, Opponent enemy) {
-    enemy.hp = enemy.hp - computeDamage(player.atk, enemy.atk);
+    double damage = computeDamage(player.atk, enemy.def);
+    enemy.hp = enemy.hp - damage;
+    print("You attacked and inflicted $damage damage");
   }
 
+  bool isAlive() {
+    if (hp > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+}
+
+class Warrior extends Player {
+  Warrior(Player player) : super(player.name) {
+    hp = player.hp;
+    level = player.level;
+    atk = player.atk * 1.2;
+    def = player.def * 1.4;
+    abilities.add(this.furyAttack);
+  }
+
+  void furyAttack(Player player, Opponent enemy) {
+    enemy.hp = enemy.hp - (computeDamage(player.atk, enemy.def) + 10);
+  }
+}
+
+class Assassin extends Player {
+  Assassin(Player player) : super (player.name) {
+    hp = player.hp;
+    level = player.level;
+    atk = player.atk * 2;
+    def = player.def * 0.6;
+    abilities.add(this.quickSlash);
+  }
+  void quickSlash(Player player, Opponent enemy) {
+    enemy.hp = enemy.hp - (computeDamage(player.atk, enemy.def * 0.6));
+  }
 }
 
 
