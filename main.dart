@@ -42,7 +42,7 @@ main() {
   // Player player_character = Player(userInput);
   sleep(Duration(seconds: 1));
   clearConsole();
-  Player player_character = Player("blank_name");
+  Player player_character = Player("You");
   Prologue(player_character);
   
   

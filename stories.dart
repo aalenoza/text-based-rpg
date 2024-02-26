@@ -24,16 +24,16 @@ void printTextOneCharAtATime(String? text, int delay) {
 }
 
 void Tutorial() {
-  printTextOneCharAtATime("Fighting in this game takes turns... bla bla bla", 100);
+  printTextOneCharAtATime("Fighting in this game takes turns... bla bla bla", 10);
   clearConsole();
 }
 
 void Prologue(Player player) {
-  printTextOneCharAtATime("PROLOGUE", 100);
+  printTextOneCharAtATime("PROLOGUE", 10);
   sleep(Duration(seconds: 1));
   stdout.write("Welcome ");
-  printTextOneCharAtATime("You have entered the world of ron!", 100);
-  printTextOneCharAtATime("You are a guard currently in the middle of battle protecting the leader of your village!",80);
+  printTextOneCharAtATime("You have entered the world of ron!", 10);
+  printTextOneCharAtATime("You are a guard currently in the middle of battle protecting the leader of your village!",10);
   clearConsole();
   print("You are a guard currently in the middle of battle protecting the leader of your village!");
   printTextOneCharAtATime("There are a bunch of enemies!", 20);

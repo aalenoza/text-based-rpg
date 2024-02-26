@@ -5,7 +5,7 @@ double computeDamage(double player_atk, double enemy_def) {
   return damage;
 }
 
-class Player {
+class Player implements Attacker, Damageable{
   String? name;
   double hp = 10;
   double level = 1;
@@ -16,10 +16,14 @@ class Player {
 
   Player(String? this.name);
 
-  void attack(Player player, Opponent enemy) {
-    double damage = computeDamage(player.atk, enemy.def);
-    enemy.hp = enemy.hp - damage;
-    print("You attacked and inflicted $damage damage");
+  void attack(Damageable target) {
+    double damage = computeDamage(this.atk, target.hp);
+    target.takeDamage(damage);
+    print("${this.name} attacked and inflicted $damage damage");
+  }
+
+  void takeDamage(double damage){
+    this.hp = this.hp - damage;
   }
 
   bool isAlive() {
@@ -57,6 +61,16 @@ class Assassin extends Player {
   void quickSlash(Player player, Opponent enemy) {
     enemy.hp = enemy.hp - (computeDamage(player.atk, enemy.def * 0.6));
   }
+}
+
+
+abstract class Attacker{
+  void attack(Damageable target);
+}
+
+abstract class Damageable{
+  double hp = 10;
+  void takeDamage(double damage);
 }
 
 
