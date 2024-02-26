@@ -15,7 +15,7 @@ class Opponent implements Attacker, Damageable{
   Opponent(String? this.name);
 
   void attack(Damageable target) {
-    double damage = computeDamage(this.atk, target.hp);
+    double damage = computeDamage(this.atk, target.def);
     target.takeDamage(damage);
     print("${this.name} attacked and inflicted $damage damage");
   }

@@ -17,7 +17,7 @@ class Player implements Attacker, Damageable{
   Player(String? this.name);
 
   void attack(Damageable target) {
-    double damage = computeDamage(this.atk, target.hp);
+    double damage = computeDamage(this.atk, target.def);
     target.takeDamage(damage);
     print("${this.name} attacked and inflicted $damage damage");
   }
@@ -69,7 +69,7 @@ abstract class Attacker{
 }
 
 abstract class Damageable{
-  double hp = 10;
+  double def = 0;
   void takeDamage(double damage);
 }
 
